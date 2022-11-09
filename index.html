@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 11 - Event Handler</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .conten {
+            border: 2px solid #58ccc2;
+            margin: 20px;
+            margin-bottom: 40px;
+            width: 750px;
+            height: auto;
+            border-radius: 10px;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            margin-top: 20px;
+        }
+        p {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 10px 20px;
+            font-size: 20px;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #6df5e9 ;
+        }
+        label {
+            margin-left: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conten">
+        <h1>Mouse Event Program</h1>
+        <button id="btnEnter">Mouse Enter</button>
+        <button id="btnHover">Mouse Hover</button>
+        <button id="btnOut">Mouse Out</button>
+    </div>
+
+    <div class="conten">
+        <h1>Keyboard Event Program</h1>
+        <p id="down"></p>
+        <p id="press"></p>
+        <p id="up"></p>
+    </div>
+
+    <div class="conten">
+        <h1>Change Event Program</h1>
+        <label for="masak">Pilih Masakan</label>
+        <select name="masak" id="masak">
+            <option>Nasi Goreng</option>
+            <option>Mie Goreng</option>
+            <option>Ayam Bakar</option>
+        </select>
+        <p id="hasil"></p>
+    </div>
+
+<script>
+    //Mouse Event
+    let btnEnter = document.getElementById("btnEnter");
+    let btnHover = document.getElementById("btnHover");
+    let btnOut = document.getElementById("btnOut");
+
+    btnEnter.addEventListener("mouseenter", function (event) {
+        event.target.innerText = "Mouse telah Masuk";
+        btnEnter.style.backgroundColor = "#59d4f3"
+        btnEnter.style.transition = ".3s"
+    });
+
+    btnOut.addEventListener("mouseout", function (event) {
+        event.target.innerText = "Mouse sudah keluar";
+        btnOut.style.backgroundColor = "#59d4f3"
+        btnOut.style.transition = ".3s"
+    });
+
+    btnHover.addEventListener("mouseover", function (event) {
+        event.target.innerText = "Mouse sudah di atas elemen";
+        btnHover.style.cursor = "pointer"
+        btnHover.style.backgroundColor = "#59d4f3"
+        btnHover.style.transition = ".3s"
+    });
+
+    // Keyboard Event
+    let down = document.getElementById("down");
+    let press = document.getElementById("press");
+    let up = document.getElementById("up");
+
+    document.addEventListener("keydown", function (event) {
+        down.innerText = `menekan: ${event.key}`;
+    });
+    
+    document.addEventListener("keypress", function (event) {
+        press.innerText = `menahan: ${event.key}`;
+    });
+
+    document.addEventListener("keyup", function (event) {
+        up.innerText = `melepas: ${event.key}`;
+    });
+
+    // Change Event
+    let masak = document.getElementById('masak');
+    let hasil = document.getElementById('hasil');
+
+    masak.addEventListener('change', function(m){
+    hasil.innerText = `Kamu Memilih Menu : ${m.target.value}`;
+    });
+</script>
+</body>
+
+</html>
